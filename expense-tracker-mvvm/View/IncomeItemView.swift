@@ -8,11 +8,21 @@
 import SwiftUI
 
 struct IncomeItemView: View {
+    var incomeItem:IncomeItem
+    @ObservedObject private var viewModel = IncomeItemViewModel()
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack{
+        Text(incomeItem.name).font(.title)
+            .padding()
+        Spacer()
+            VStack(alignment:.leading){
+                if let description = incomeItem.description {
+                    Text(description.capitalized)
+                }
+                Text(incomeItem.value,format: FloatingPointFormatStyle()).font(.title)
+                
+            }.padding()
+        }
     }
 }
-
-#Preview {
-    IncomeItemView()
-}
+            

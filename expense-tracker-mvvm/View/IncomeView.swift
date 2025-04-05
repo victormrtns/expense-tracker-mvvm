@@ -7,18 +7,30 @@
 
 import SwiftUI
 
-struct ContentView: View {
+
+struct IncomeView: View {
+    @StateObject private var viewModel: IncomeItemViewModel = IncomeItemViewModel()
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        Button("Add",action: viewModel.addItemViewModel).padding()
+        VStack{
+            List{
+                ForEach(viewModel.incomeItems){incomeItem in
+                    IncomeItemView(incomeItem:incomeItem)
+                }
+                .onDelete(perform:viewModel.deleteItemViewModel)
+                .onMove(perform: viewModel.moveItem)
+                
+            }
+            .toolbar {
+                EditButton()
+            }
         }
-        .padding()
     }
+    
+    
 }
 
+
 #Preview {
-    ContentView()
+    IncomeView()
 }
