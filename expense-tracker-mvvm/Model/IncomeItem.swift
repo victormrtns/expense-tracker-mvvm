@@ -6,11 +6,18 @@
 //
 
 import Foundation
+import SwiftData
 
-
-struct IncomeItem: Identifiable {
-    var id: UUID = UUID()
+@Model
+class IncomeItem: Identifiable {
     var name: String
-    var description: String?
+    var descriptionitem: String?
     var value: Double
+    
+    
+    init(name: String, descriptionitem: String? = nil, value: Double) {
+        self.name = name
+        self.descriptionitem = descriptionitem
+        self.value = value
+    }
 }

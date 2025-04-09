@@ -9,14 +9,14 @@ import SwiftUI
 
 struct IncomeItemView: View {
     var incomeItem:IncomeItem
-    @ObservedObject private var viewModel = IncomeItemViewModel()
+    var viewModel = IncomeItemViewModel()
     var body: some View {
         HStack{
         Text(incomeItem.name).font(.title)
             .padding()
         Spacer()
             VStack(alignment:.leading){
-                if let description = incomeItem.description {
+                if let description = incomeItem.descriptionitem {
                     Text(description.capitalized)
                 }
                 Text(incomeItem.value,format: FloatingPointFormatStyle()).font(.title)

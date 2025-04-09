@@ -8,16 +8,16 @@
 import Foundation
 
 
-class IncomeItemViewModel:ObservableObject{
-    @Published var incomeItems: [IncomeItem] = [
-        IncomeItem(name: "Salary",description:"INCOME FROM SALARY", value: 30000000),
-        IncomeItem(name: "Freela",description:"wherever", value: 3000000),
-        IncomeItem(name: "Robbing",description:"I just enjoy this", value: 3000000),
+@Observable class IncomeItemViewModel{
+    var incomeItems: [IncomeItem] = [
+        IncomeItem(name: "Salary",descriptionitem:"INCOME FROM SALARY", value: 30000000),
+        IncomeItem(name: "Freela",descriptionitem:"wherever", value: 3000000),
+        IncomeItem(name: "Robbing",descriptionitem:"I just enjoy this", value: 3000000),
         IncomeItem(name: "Robbing1", value: 3000000)
     ]
     
     func addItemViewModel() {
-        incomeItems.append(IncomeItem(name: "New Item",description:"aa", value: 10.00))
+        incomeItems.append(IncomeItem(name: "New Item",descriptionitem:"aa", value: 10.00))
     }
     
     func deleteItemViewModel(at offsets: IndexSet){

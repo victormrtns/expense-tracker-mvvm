@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct expense_tracker_mvvmApp: App {
@@ -13,5 +14,6 @@ struct expense_tracker_mvvmApp: App {
         WindowGroup {
             IncomeView()
         }
+        .modelContainer(for:[IncomeItem.self])
     }
 }

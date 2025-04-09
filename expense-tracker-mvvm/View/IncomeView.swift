@@ -9,7 +9,8 @@ import SwiftUI
 
 
 struct IncomeView: View {
-    @StateObject private var viewModel: IncomeItemViewModel = IncomeItemViewModel()
+    @Environment(\.modelContext) var context
+    @State private var viewModel: IncomeItemViewModel = IncomeItemViewModel()
     var body: some View {
         Button("Add",action: viewModel.addItemViewModel).padding()
         VStack{
