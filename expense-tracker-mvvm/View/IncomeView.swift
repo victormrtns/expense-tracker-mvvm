@@ -6,11 +6,11 @@
 //
 
 import SwiftUI
-
+import SwiftData
 
 struct IncomeView: View {
-    @Environment(\.modelContext) var context
-    @State private var viewModel: IncomeItemViewModel = IncomeItemViewModel()
+    @Environment(\.modelContext) var modelContext
+    @State var viewModel=IncomeItemViewModel()
     var body: some View {
         Button("Add",action: viewModel.addItemViewModel).padding()
         VStack{
@@ -24,6 +24,10 @@ struct IncomeView: View {
             }
             .toolbar {
                 EditButton()
+            }
+            .onAppear{
+                viewModel.context = modelContext
+                viewModel.fetchItems()
             }
         }
     }

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct IncomeItemView: View {
     var incomeItem:IncomeItem
-    var viewModel = IncomeItemViewModel()
     var body: some View {
         HStack{
         Text(incomeItem.name).font(.title)
