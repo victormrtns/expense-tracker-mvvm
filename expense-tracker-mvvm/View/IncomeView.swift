@@ -16,22 +16,19 @@ struct IncomeView: View {
             NavigationLink("Add"){
                 AddIncomeView()
             }
-        }
-        VStack{
-            List{
-                ForEach(viewModel.incomeItems){incomeItem in
-                    IncomeItemView(incomeItem:incomeItem)
+            VStack{
+                List{
+                    ForEach(viewModel.incomeItems){incomeItem in
+                        IncomeItemView(incomeItem:incomeItem)
+                    }
+                    .onDelete(perform:viewModel.deleteItemViewModel)
+                    .onMove(perform: viewModel.moveItem)
+                    
                 }
-                .onDelete(perform:viewModel.deleteItemViewModel)
-                .onMove(perform: viewModel.moveItem)
-                
-            }
-            .toolbar {
-                EditButton()
-            }
-            .onAppear{
-                viewModel.context = modelContext
-                viewModel.fetchItems()
+                .onAppear{
+                    viewModel.context = modelContext
+                    viewModel.fetchItems()
+                }
             }
         }
     }
